@@ -60,7 +60,31 @@
             <div id="template-simpleview-box">
                 <b>Search:</b>
                 <input class="form-control search fuzzy-search" placeholder="Search..." id="simpleview-search">
-                
+                <form class="pt-1">
+                    <div class="row">
+                        <div class="col">
+                            <br>
+                            <button type="button" class="btn btn-primary btn-block sort" data-sort="name">Sort by Name <span class="caret caret-up hidden"><i class="fas fa-caret-up"></i></span><span class="caret caret-down hidden"><i class="fas fa-caret-down"></i></span></button>
+                        </div>
+                        <div class="col">
+                            <br>
+                            <button type="button" class="btn btn-primary btn-block sort" data-sort="shape">Sort by Shape <span class="caret caret-up hidden"><i class="fas fa-caret-up"></i></span><span class="caret caret-down hidden"><i class="fas fa-caret-down"></i></span></button>
+                        </div>
+                        <div class="col">
+                                <br>
+                                <button type="button" class="btn btn-primary btn-block sort" data-sort="type">Sort by Type <span class="caret caret-up hidden"><i class="fas fa-caret-up"></i></span><span class="caret caret-down hidden"><i class="fas fa-caret-down"></i></span></button>
+                        </div>
+                        <div class="col">
+                        <b>Show only:</b>
+                            <select class="selectpicker form-control" multiple data-actions-box="true">
+                                <option selected>2d shapes</option>
+                                <option>3d shapes</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </form>
+                <hr>
                 <ul class="list">
                     <li> <span class="color">Red</span> <span class="shape">Square</span> - <span class="type">2d shape</span></li>
                     <li> <span class="color">Green</span> <span class="shape">Square</span> - <span class="type">2d shape</span></li>
@@ -100,7 +124,24 @@
         }
         getAsyncData(initList);
         function initList(asyncData) {
-           
+
+            $('#event-list .sort').on('click', function () {
+                
+                if ($(this).hasClass("asc")) {
+                    $(".caret").addClass("hidden");
+                    $(this).find(".caret.caret-up").removeClass("hidden");
+                } else if ($(this).hasClass("desc")) {
+                    $(".caret").addClass("hidden");
+                    $(this).find(".caret.caret-down").removeClass("hidden");
+                }
+                
+            });
+
+            //If on moible, tell seectpicker to default to system default select.
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+                $(".selectpicker").selectpicker("mobile");
+            }
+
             var options = {
               valueNames: [ "color", "shape", "type"]
             };
@@ -111,6 +152,7 @@
             
             
         }
+        
     </script>
 </body>
 
