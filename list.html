@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Jeffrey Meng">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jeffkmeng.com/library/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Jeffrey Template - Lists</title>
+    <style>
+        /* https://stackoverflow.com/a/3525675/5511561 */
+
+        html,
+        body {
+            margin: 0px;
+            padding: 0px;
+            min-height: 100%;
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100%;
+            height: auto !important;
+            margin-bottom: -50px;
+            /* the bottom margin is the negative value of the footer's total height */
+        }
+
+        .container:after {
+            content: "";
+            display: block;
+            height: 50px;
+            /* the footer's total height */
+        }
+
+
+
+        .footer {
+            height: 50px;
+            /* the footer's total height */
+        }
+
+        .footer-content {
+
+            height: 32px;
+            /* height + top/bottom paddding + top/bottom border must add up to footer height */
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-lg-12">
+            <h1>Jeffrey Template - Lists</h1>
+            <p class="text-muted">A simple search/sort list of items with an advanced table view. (Also see <a href="/coming-soon.html">Coming soon template</a> / <a href="/list.html">Lists Template</a>)</p>
+            <hr>
+           
+            <p><a id="switch-view" href="#advancedview">Switch to <span id="switch-view-view-type">Advanced View</span>.</a></p>
+            <div id="template-simpleview-box">
+                <b>Search:</b>
+                <input class="form-control search fuzzy-search" placeholder="Search..." id="simpleview-search">
+                
+                <ul class="list">
+                    <li> <span class="color">Red</span> <span class="shape">Square</span> - <span class="type">2d shape</span></li>
+                    <li> <span class="color">Green</span> <span class="shape">Square</span> - <span class="type">2d shape</span></li>
+                    <li> <span class="color">Blue</span> <span class="shape">Square</span> - <span class="type">2d shape</span></li>
+                    <li> <span class="color">Red</span> <span class="shape">Triangle</span> - <span class="type">2d shape</span></li>
+                    <li> <span class="color">Blue</span> <span class="shape">Triangle</span> - <span class="type">2d shape</span></li>
+                    <li> <span class="color">Green</span> <span class="shape">Triangle</span> - <span class="type">2d shape</span></li>
+                    <li> <span class="color">Red</span> <span class="shape">Cube</span> - <span class="type">3d prism</span></li>
+                    <li> <span class="color">Green</span> <span class="shape">Cube</span> - <span class="type">3d prism</span></li>
+                    <li> <span class="color">Blue</span> <span class="shape">Cube</span> - <span class="type">3d prism</span></li>
+                    <li> <span class="color">Red</span> <span class="shape">Triangular Prism</span> - <span class="type">3d prism</span></li>
+                    <li> <span class="color">Blue</span> <span class="shape">Triangular Prism</span> - <span class="type">3d prism</span></li>
+                    <li> <span class="color">Green</span> <span class="shape">Trianglar Prism</span> - <span class="type">3d prism</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content text-center">
+            Copyright &copy; 2018 Jeffrey Meng
+        </div>
+    </div>
+    <script src="https://cdn.jeffkmeng.com/library/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jeffkmeng.com/library/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jeffkmeng.com/library/list/1.5.0/list.min.js"></script>
+    
+    <script>
+        function getAsyncData(callback) {
+            //fake async data
+            callback([
+                {color:"Black", shape:"Square", type:"2d shape"},
+                {color:"Black", shape:"Triangle", type:"2d shape"},
+                {color:"Black", shape:"Cube", type:"3d prism"},
+                {color:"Black", shape:"Triangular Prism", type:"3d prism"}
+            ]);
+        }
+        getAsyncData(initList);
+        function initList(asyncData) {
+           
+            var options = {
+              valueNames: [ "color", "shape", "type"]
+            };
+            
+
+            
+            var userList = new List('template-simpleview-box', options, asyncData);
+            
+            
+        }
+    </script>
+</body>
+
+</html>
