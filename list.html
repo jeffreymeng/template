@@ -51,6 +51,18 @@
         .hidden {
             display:none;
         }
+        
+        .caret {
+            display:none;
+        }
+        
+        .asc .caret.caret-up {
+            display:block;
+        }
+        
+        .desc .caret.caret-down {
+            display:block;
+        }
     </style>
 </head>
 
@@ -69,15 +81,15 @@
                     <div class="row">
                         <div class="col">
                             <br>
-                            <button type="button" class="btn btn-primary btn-block sort" data-sort="color">Sort by Color <span class="caret caret-up hidden"><i class="fas fa-caret-up"></i></span><span class="caret caret-down hidden"><i class="fas fa-caret-down"></i></span></button>
+                            <button type="button" class="btn btn-primary btn-block sort" data-sort="color">Sort by Color <span class="caret caret-up"><i class="fas fa-caret-up"></i></span><span class="caret caret-down"><i class="fas fa-caret-down"></i></span></button>
                         </div>
                         <div class="col">
                             <br>
-                            <button type="button" class="btn btn-primary btn-block sort" data-sort="shape">Sort by Shape <span class="caret caret-up hidden"><i class="fas fa-caret-up"></i></span><span class="caret caret-down hidden"><i class="fas fa-caret-down"></i></span></button>
+                            <button type="button" class="btn btn-primary btn-block sort" data-sort="shape">Sort by Shape <span class="caret caret-up"><i class="fas fa-caret-up"></i></span><span class="caret caret-down"><i class="fas fa-caret-down"></i></span></button>
                         </div>
                         <div class="col">
                                 <br>
-                                <button type="button" class="btn btn-primary btn-block sort" data-sort="type">Sort by Type <span class="caret caret-up hidden"><i class="fas fa-caret-up"></i></span><span class="caret caret-down hidden"><i class="fas fa-caret-down"></i></span></button>
+                                <button type="button" class="btn btn-primary btn-block sort" data-sort="type">Sort by Type <span class="caret caret-up"><i class="fas fa-caret-up"></i></span><span class="caret caret-down"><i class="fas fa-caret-down"></i></span></button>
                         </div>
                         <div class="col">
                         <b>Show only:</b>
@@ -132,7 +144,7 @@
         getAsyncData(initList);
         function initList(asyncData) {
 
-            $('.sort').on('click', function () {
+            /*$('.sort').on('click', function () {
                 
                 if ($(this).hasClass("asc")) {
                     $(".caret").addClass("hidden");
@@ -142,7 +154,7 @@
                     $(this).find(".caret.caret-down").removeClass("hidden");
                 }
                 
-            });
+            });*/
 
             //If on moible, tell seectpicker to default to system default select.
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
