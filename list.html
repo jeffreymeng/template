@@ -163,6 +163,7 @@
             var simpleList = new List('template-simpleview-box', options, asyncData);
             
             $("#simpleview-shapefilter").change(function() {
+                console.log($(this).val());
                 var selected = $(this).val().split(",");
                 simpleList.filter(function(item) {
                     if (selected.indexOf(item.values().type) > -1) {
