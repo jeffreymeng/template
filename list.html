@@ -94,9 +94,9 @@
                         </div>
                         <div class="col">
                         <b>Show only:</b>
-                            <select class="selectpicker form-control" multiple data-actions-box="true">
-                                <option selected>2d shapes</option>
-                                <option>3d shapes</option>
+                            <select class="selectpicker form-control" multiple data-actions-box="true" id="simpleview-shapefilter">
+                                <option value="2d shape" selected>2d shapes</option>
+                                <option value="3d prism" selected>3d shapes</option>
                             </select>
 
                         </div>
@@ -147,17 +147,7 @@
         getAsyncData(initList);
         function initList(asyncData) {
 
-            /*$('.sort').on('click', function () {
-                
-                if ($(this).hasClass("asc")) {
-                    $(".caret").addClass("hidden");
-                    $(this).find(".caret.caret-up").removeClass("hidden");
-                } else if ($(this).hasClass("desc")) {
-                    $(".caret").addClass("hidden");
-                    $(this).find(".caret.caret-down").removeClass("hidden");
-                }
-                
-            });*/
+            
 
             //If on moible, tell seectpicker to default to system default select.
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
@@ -172,7 +162,16 @@
             
             var simpleList = new List('template-simpleview-box', options, asyncData);
             
-            
+            $("#simpleview-shapefilter").change(function() {
+                var selected = $(this).val().split(",");
+                simpleList.filter(function(item) {
+                    if (selected.indexOf(item.values().type) > -1) {
+                       return true;
+                    } else {
+                       return false;
+                    }
+                });
+            });
         }
         
     </script>
