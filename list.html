@@ -149,7 +149,6 @@
         }
                         
         function setURLQuery(fullQueryString) {
-            console.log(fullQueryString);
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + fullQueryString + window.location.hash;
             if (history.pushState) {
                 window.history.pushState({path:newurl},'',newurl);
@@ -177,9 +176,7 @@
         function initList(asyncData) {
 
             $(".sort").click(function() {
-                console.log($(this).attr("data-sort"));
-                console.log($(this).hasClass("asc"));
-                console.log("?sort=" + $(this).attr("data-sort") + "&order=" + ($(this).hasClass("asc") ? "asc" : "desc"));
+                
                 setURLQuery("?sort=" + $(this).attr("data-sort") + "&order=" + ($(this).hasClass("asc") ? "asc" : "desc"));
             });
 
