@@ -137,7 +137,7 @@
     
     <script>
         function setURLQuery(fullQueryString) {
-            
+            console.log(fullQueryString);
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + fullQueryString + window.location.hash;
             if (history.pushState) {
                 window.history.pushState({path:newurl},'',newurl);
