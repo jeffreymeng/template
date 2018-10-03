@@ -146,7 +146,12 @@
             }
             checkDefaultOptions();
         }
-    
+        function checkDefaultOptions() {
+            if (getQuery("sort") && getQuery("order")) {
+                console.log(getQuery("sort"));
+                console.log(getQuery("order"))
+            }
+        }
         function getAsyncData(callback) {
             //fake async data
             callback([
