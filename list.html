@@ -177,7 +177,10 @@
         function initList(asyncData) {
 
             $(".sort").click(function() {
-                setURLQuery("?sort=" + $(this).attr("data-sort") + "&order=" + $(this).hasClass("asc") ? "asc" : "desc");
+                console.log($(this).attr("data-sort"));
+                console.log($(this).hasClass("asc"));
+                console.log("?sort=" + $(this).attr("data-sort") + "&order=" + ($(this).hasClass("asc") ? "asc" : "desc"));
+                setURLQuery("?sort=" + $(this).attr("data-sort") + "&order=" + ($(this).hasClass("asc") ? "asc" : "desc"));
             });
 
             //If on moible, tell seectpicker to default to system default select.
