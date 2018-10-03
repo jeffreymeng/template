@@ -177,7 +177,10 @@
 
             $(".sort").click(function() {
                 
-                setURLQuery("?sort=" + $(this).attr("data-sort") + "&order=" + ($(this).hasClass("asc") ? "asc" : "desc"));
+                setURLQuery("?sort=" + $(this).attr("data-sort") + "&order=" + (!($(this).hasClass("asc")) ? "asc" : $(this).hasClass("desc") ? "asc" : "desc"));
+                //the click event is called before the list is updated, so if the button has sort asc when clicked, it is going to be changed to desc after this function is called.
+                //if it has no class it's going to be asc, otherwise it's the opposite.
+                //TODO: find a better way to do this.
             });
 
             //If on moible, tell seectpicker to default to system default select.
@@ -192,6 +195,11 @@
 
             
             var simpleList = new List('template-simpleview-box', options, asyncData);
+            
+            simpleList.on("updated", function(param1, param2) {
+                console.log(param1);
+                console.log(param2);
+            });
             
             $("#simpleview-shapefilter").change(function() {
                 var selected = $(this).val();
