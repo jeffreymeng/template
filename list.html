@@ -136,6 +136,17 @@
     
     
     <script>
+        function setURLQuery(fullQueryString) {
+            
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + fullQueryString + window.location.hash;
+            if (history.pushState) {
+                window.history.pushState({path:newurl},'',newurl);
+            } else {
+                //window.location.href = newurl;
+            }
+            checkDefaultOptions();
+        }
+    
         function getAsyncData(callback) {
             //fake async data
             callback([
@@ -148,7 +159,9 @@
         getAsyncData(initList);
         function initList(asyncData) {
 
-            
+            $(".sort").click(function() {
+                setURLQuery("?sort=" + $(this).attr("data-sort") + "&order=" + $(this).hasClass("asc") ? "asc" : "desc");
+            });
 
             //If on moible, tell seectpicker to default to system default select.
             if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
