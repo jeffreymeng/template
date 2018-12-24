@@ -148,7 +148,7 @@
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
                         
-        function setURLQuery(fullQueryString) {
+        function setQueryString(fullQueryString) {
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + fullQueryString + window.location.hash;
             if (history.pushState) {
                 window.history.pushState({path:newurl},'',newurl);
